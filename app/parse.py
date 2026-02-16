@@ -79,8 +79,11 @@ def write_to_csv(quotes: list[Quote], output_path: str) -> None:
 
 def main(output_csv_path: str) -> None:
     quotes = get_quotes()
+
+    write_to_csv(quotes, output_csv_path)
+
     if quotes:
-        write_to_csv(quotes, output_csv_path)
+        print("Successfully parsed quotes.")
     else:
         print("Warning: No quotes found.")
 
