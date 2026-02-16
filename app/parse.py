@@ -8,6 +8,7 @@ from tqdm import tqdm
 
 URL = "https://quotes.toscrape.com/"
 
+
 @dataclass
 class Quote:
     text: str
@@ -22,7 +23,7 @@ def page_generator() -> Generator[BeautifulSoup, None, None]:
             request_url = f"{URL}page/{page_number}/"
             response = session.get(url=request_url)
 
-            if response.status_code !=200:
+            if response.status_code != 200:
                 break
 
             soup = BeautifulSoup(response.content, "html.parser")
@@ -82,6 +83,7 @@ def main(output_csv_path: str) -> None:
         write_to_csv(quotes, output_csv_path)
     else:
         print("Warning: No quotes found.")
+
 
 if __name__ == "__main__":
     main("quotes.csv")
